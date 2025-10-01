@@ -7,24 +7,1527 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
-    /* YOUR ENTIRE CSS CODE HERE - Copy from original file */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    /* ... include ALL your CSS ... */
+    
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #7209b7;
+      --accent: #f72585;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #4cc9f0;
+      --warning: #f8961e;
+      --danger: #e63946;
+      --gray: #6c757d;
+      --border-radius: 12px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-attachment: fixed;
+      color: var(--dark);
+      min-height: 100vh;
+      padding: 15px;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    
+    header {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 20px 15px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="%23FFFFFF" opacity="0.1" cx="50" cy="50" r="40"/></svg>');
+      background-size: 150px;
+    }
+    
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .logo {
+      font-weight: bold;
+      font-size: 32px;
+      background: white;
+      color: var(--primary);
+      padding: 8px 20px;
+      border-radius: 50px;
+      display: inline-block;
+      box-shadow: var(--shadow);
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    
+    .subtitle {
+      font-style: italic;
+      margin-top: 5px;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    
+    .form-container {
+      padding: 20px 15px;
+    }
+    
+    .form-section {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: var(--light);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary);
+    }
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .section-title i {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+    
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .form-group {
+      width: 100%;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .form-group input, .form-group select {
+      width: 100%;
+    }
+    
+    .category-group {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .category-title {
+      width: 100%;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #eee;
+      font-size: 18px;
+    }
+    
+    .material-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    
+    label {
+      font-weight: 500;
+      min-width: 80px;
+    }
+    
+    select, input, button, textarea {
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: var(--transition);
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    select:focus, input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+    
+    .quantity-input {
+      text-align: center;
+    }
+    
+    button {
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+      border: none;
+      font-weight: 600;
+      padding: 14px 20px;
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 50px;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+    
+    button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+      background: white;
+      box-shadow: var(--shadow);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+    
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+    
+    th {
+      background: var(--primary);
+      color: white;
+      font-weight: 500;
+    }
+    
+    tr:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .delete-btn {
+      background: var(--danger);
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    
+    .delete-btn:hover {
+      background: #c1121f;
+    }
+    
+    .add-row-btn {
+      margin-top: 20px;
+      background: var(--success);
+      width: 100%;
+    }
+    
+    .add-row-btn:hover {
+      background: #3a86ff;
+    }
+    
+    .submit-section {
+      margin-top: 30px;
+      padding: 20px;
+      background: var(--light);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+    
+    .email-preview {
+      background: white;
+      padding: 20px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .email-preview h3 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    
+    .material-icons {
+      vertical-align: middle;
+      margin-right: 5px;
+      font-size: 20px;
+    }
+    
+    .instructions {
+      background: #fff8e1;
+      padding: 15px;
+      border-radius: var(--border-radius);
+      margin-top: 20px;
+      border-left: 4px solid var(--warning);
+      font-size: 14px;
+    }
+    
+    .dropdown-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .dropdown-group {
+      width: 100%;
+    }
+    
+    .dropdown-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    /* Quantity container */
+    .quantity-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .quantity-label {
+      font-weight: 500;
+      min-width: auto;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 18px;
+      margin: 20px 0;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+    
+    .submit-btn:hover {
+      background: linear-gradient(to right, var(--primary-dark), #5a189a);
+    }
+    
+    /* Quantity dropdown styling */
+    .quantity-select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      background-color: white;
+    }
+    
+    .add-item-btn {
+      margin-top: 10px;
+      width: 100%;
+    }
+    
+    .custom-quantity {
+      display: none;
+      margin-top: 10px;
+    }
+    
+    /* Material Transfer Section Styles */
+    .transfer-section {
+      margin-top: 30px;
+      padding: 20px;
+      background: var(--light);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent);
+    }
+    
+    .transfer-header {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .transfer-title {
+      font-size: 20px;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    
+    .transfer-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+    
+    .transfer-table th {
+      background-color: var(--secondary);
+      color: white;
+      padding: 12px 10px;
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    .transfer-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: center;
+    }
+    
+    .transfer-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .transfer-table tr:hover {
+      background-color: #f1f8ff;
+    }
+    
+    .transfer-direction {
+      font-weight: 600;
+      color: var(--secondary);
+      text-align: center;
+      width: 40px;
+      font-size: 18px;
+    }
+    
+    .transfer-actions {
+      text-align: center;
+      width: 70px;
+    }
+    
+    /* Card layout for mobile */
+    .card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--primary);
+    }
+    
+    .card-title {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    /* Excel Table Styles */
+    .excel-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    
+    .excel-table th, .excel-table td {
+      border: 2px solid #000;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    
+    .excel-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    
+    .excel-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    .excel-preview {
+      background: white;
+      padding: 15px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+    
+    /* Mobile-specific styles */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+        font-size: 14px;
+      }
+      
+      .container {
+        border-radius: 10px;
+      }
+      
+      header {
+        padding: 15px 10px;
+      }
+      
+      h1 {
+        font-size: 20px;
+      }
+      
+      .form-container {
+        padding: 15px 10px;
+      }
+      
+      .form-section {
+        padding: 15px;
+      }
+      
+      th, td {
+        padding: 10px 5px;
+        font-size: 12px;
+      }
+      
+      .email-preview {
+        padding: 15px;
+      }
+      
+      .submit-section {
+        padding: 15px;
+      }
+      
+      /* Make tables scrollable on mobile */
+      .table-container {
+        overflow-x: auto;
+        margin: 0 -10px;
+        padding: 0 10px;
+      }
+      
+      table {
+        min-width: 600px;
+      }
+      
+      /* Improve button sizing for mobile */
+      button {
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+      
+      /* Adjust form elements for mobile */
+      select, input, textarea {
+        padding: 12px;
+        font-size: 14px;
+      }
+      
+      /* Mobile-friendly transfer section */
+      .transfer-row-mobile {
+        display: block;
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        border-left: 4px solid var(--accent);
+      }
+      
+      .transfer-row-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .transfer-row-title {
+        font-weight: 600;
+        color: var(--accent);
+      }
+      
+      .transfer-row-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .transfer-from, .transfer-to {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .transfer-direction-mobile {
+        text-align: center;
+        font-size: 24px;
+        color: var(--secondary);
+        margin: 10px 0;
+      }
+      
+      .transfer-field {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .transfer-field label {
+        font-weight: 500;
+        color: var(--dark);
+        font-size: 14px;
+      }
+      
+      /* Hide desktop transfer table on mobile */
+      .transfer-table {
+        display: none;
+      }
+      
+      /* Show mobile transfer rows on mobile */
+      .transfer-row-mobile {
+        display: block;
+      }
+      
+      /* Improved mobile input styling */
+      select, input, textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+        padding: 14px;
+        font-size: 16px;
+      }
+      
+      /* Make sure inputs are large enough for touch */
+      input[type="text"], input[type="number"], select {
+        min-height: 44px;
+      }
+      
+      /* Improve dropdown arrow appearance */
+      select {
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px;
+        padding-right: 40px;
+      }
+      
+      /* Excel table mobile adjustments */
+      .excel-table {
+        font-size: 12px;
+      }
+      
+      .excel-table th, .excel-table td {
+        padding: 6px 8px;
+      }
+    }
+    
+    /* Desktop-specific styles */
+    @media (min-width: 769px) {
+      .container {
+        max-width: 1200px;
+      }
+      
+      .form-row {
+        flex-direction: row;
+      }
+      
+      .form-group {
+        min-width: calc(50% - 15px);
+      }
+      
+      .dropdown-container {
+        flex-direction: row;
+      }
+      
+      .dropdown-group {
+        min-width: calc(50% - 15px);
+      }
+      
+      .transfer-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      /* Hide mobile transfer rows on desktop */
+      .transfer-row-mobile {
+        display: none;
+      }
+      
+      /* Show desktop transfer table on desktop */
+      .transfer-table {
+        display: table;
+      }
+    }
+    
+    /* Animation for smooth interactions */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.3s ease;
+    }
+    
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--dark);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .toast.success {
+      background: var(--success);
+    }
+    
+    .toast.error {
+      background: var(--danger);
+    }
+    
+    /* Loading spinner */
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Tab navigation */
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .tab {
+      padding: 12px 20px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    
+    .tab.active {
+      border-bottom: 3px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    /* Required field indicator */
+    .required::after {
+      content: " *";
+      color: var(--danger);
+    }
   </style>
 </head>
 <body>
-  <!-- YOUR ENTIRE HTML BODY HERE - Copy from original file -->
   <div class="container">
-    <!-- ... include ALL your HTML ... -->
+    <header>
+      <div class="logo-container">
+        <div class="logo">CFSS</div>
+      </div>
+      <h1><i class="material-icons">inventory_2</i> Material Request System</h1>
+      <div class="subtitle">Customer Field Support Services - Equipment Management</div>
+    </header>
+
+    <div class="form-container">
+      <!-- Tab Navigation -->
+      <div class="tabs">
+        <div class="tab active" data-tab="request">Material Request</div>
+        <div class="tab" data-tab="transfer">Material Transfer</div>
+      </div>
+      
+      <!-- Material Request Tab -->
+      <div class="tab-content active" id="request-tab">
+        <div class="form-section">
+          <div class="section-title">
+            <i class="material-icons">assignment</i>
+            <h2>Request Details</h2>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="teamId" class="required">Team ID:</label>
+              <input type="text" id="teamId" placeholder="Enter Team ID" required oninput="updateEmailSubject()">
+            </div>
+            
+            <div class="form-group">
+              <label for="sloc" class="required">SLOC:</label>
+              <input type="text" id="sloc" placeholder="Enter SLOC" required>
+            </div>
+          </div>
+          
+          <div class="section-title">
+            <i class="material-icons">category</i>
+            <h2>Select Materials</h2>
+          </div>
+          
+          <div class="dropdown-container">
+            <!-- DTV Dropdown -->
+            <div class="dropdown-group">
+              <div class="category-title">DTV Materials</div>
+              <div class="dropdown-row">
+                <select id="dtvDropdown">
+                  <option value="">Select DTV Material</option>
+                  <option value="Dish Reflector-TR">Dish Reflector-TR</option>
+                  <option value="Lower Noise Block 9990 DTTL - TR">Lower Noise Block 9990 DTTL - TR</option>
+                  <option value="15m Co-Axial Cable Pack - TR">15m Co-Axial Cable Pack - TR</option>
+                  <option value="Dish Accessory-TR">Dish Accessory-TR</option>
+                  <option value="STB HEVC HD - TR">STB HEVC HD - TR</option>
+                  <option value="Anchor Bolt - PURCH DTTL">Anchor Bolt - PURCH DTTL</option>
+                  <option value="Splitter 02 way - PURCH DTTL">Splitter 02 way - PURCH DTTL</option>
+                  <option value="100m RG6 Co-axial Cable - PURCH DTTL">100m RG6 Co-axial Cable - PURCH DTTL</option>
+                  <option value="HDMI Cable for HD STB - PURCH DTTL">HDMI Cable for HD STB - PURCH DTTL</option>
+                  <option value="12V Power Adapter Opentech DTTL - TR">12V Power Adapter Opentech DTTL - TR</option>
+                  <option value="Universal Remote Control DTTL - TR">Universal Remote Control DTTL - TR</option>
+                  <option value="12V Universal Power Adapter DTTL- TR">12V Universal Power Adapter DTTL- TR</option>
+                  <option value="30 M Cable & Acc Pack DTTL - TR">30 M Cable & Acc Pack DTTL - TR</option>
+                  <option value="STB HEVC HD ACC DTTL - TR">STB HEVC HD ACC DTTL - TR</option>
+                  <option value="Remote HEVC DTTL - TR">Remote HEVC DTTL - TR</option>
+                  <option value="Power Adaptor HEVC DTTL - TR">Power Adaptor HEVC DTTL - TR</option>
+                  <option value="ATV HDMI STICK TR">ATV HDMI STICK TR</option>
+                  <option value="Base Plate for Dish Antenna -PURCH DTV">Base Plate for Dish Antenna -PURCH DTV</option>
+                  <option value="STB Refurb HEVC HD - TR">STB Refurb HEVC HD - TR</option>
+                  <option value="Remote Android STB - TR">Remote Android STB - TR</option>
+                  <option value="Power Adaptor Android STB- TR">Power Adaptor Android STB- TR</option>
+                  <option value="Audio Video Cable EP to 3RCA DTV-TR">Audio Video Cable EP to 3RCA DTV-TR</option>
+                  <option value="Cable Tie 4.8 x 200mm (8) PoP - PURCH">Cable Tie 4.8 x 200mm (8) PoP - PURCH</option>
+                  <option value="Splitter 02 way DTV - TR">Splitter 02 way DTV - TR</option>
+                  <option value="RF Male to F Female Jack 90 Deg PURCH">RF Male to F Female Jack 90 Deg PURCH</option>
+                  <option value="RF Female to F Female Jack 90 Deg PURCH">RF Female to F Female Jack 90 Deg PURCH</option>
+                  <option value="F-Female to F-Female Connector PURCH">F-Female to F-Female Connector PURCH</option>
+                  <option value="STB Android 2.5 Hybrid - TR">STB Android 2.5 Hybrid - TR</option>
+                  <option value="RCU Android 2.5 STB - TR">RCU Android 2.5 STB - TR</option>
+                </select>
+              </div>
+              <div class="quantity-container">
+                <label class="quantity-label">Quantity:</label>
+                <select id="dtvQuantity" class="quantity-select" onchange="toggleCustomInput('dtv')">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="custom">Custom...</option>
+                </select>
+              </div>
+              <div id="dtvCustomQuantity" class="custom-quantity">
+                <label class="quantity-label">Custom Quantity:</label>
+                <input type="text" id="dtvCustomInput" class="quantity-input" placeholder="Enter quantity">
+              </div>
+              <button class="add-item-btn" onclick="addDTVToTable()">
+                <i class="material-icons">add</i> Add DTV Item
+              </button>
+            </div>
+            
+            <!-- DBN Dropdown -->
+            <div class="dropdown-group">
+              <div class="category-title">DBN Materials</div>
+              <div class="dropdown-row">
+                <select id="dbnDropdown">
+                  <option value="">Select DBN Material</option>
+                  <option value="Cable STP (Outdoor)">Cable STP (Outdoor)</option>
+                  <option value="Sun Box Single">Sun Box Single</option>
+                  <option value="CABLE TIE 12 BLACK">CABLE TIE 12 BLACK</option>
+                  <option value="CABLE TIE 8 BLACK">CABLE TIE 8 BLACK</option>
+                  <option value="Plug Base 13A">Plug Base 13A</option>
+                  <option value="13A Plug Top">13A Plug Top</option>
+                  <option value="Power Adaptor 12V 1A - Tozed">Power Adaptor 12V 1A - Tozed</option>
+                  <option value="Curl cord - Tozed M60">Curl cord - Tozed M60</option>
+                  <option value="Battery - Tozed M60">Battery - Tozed M60</option>
+                  <option value="Handset - Tozed M60">Handset - Tozed M60</option>
+                  <option value="CONNECTOR RJ 45">CONNECTOR RJ 45</option>
+                  <option value="LTE U-SIM 32K/ 64K Native Card - DBN TR">LTE U-SIM 32K/ 64K Native Card - DBN TR</option>
+                  <option value="LTE 4G Router Indoor P28 - RS">LTE 4G Router Indoor P28 - RS</option>
+                  <option value="LTE 4G Router Phone M60 - RS">LTE 4G Router Phone M60 - RS</option>
+                  <option value="LTE 4G Router Indoor B310s-925 - TR">LTE 4G Router Indoor B310s-925 - TR</option>
+                  <option value="LTE 4G Router Indoor P28 - TR">LTE 4G Router Indoor P28 - TR</option>
+                  <option value="LTE 4G Router Phone M60 - TR">LTE 4G Router Phone M60 - TR</option>
+                  <option value="LTE 4G Router Indoor P25 Data - TR">LTE 4G Router Indoor P25 Data - TR</option>
+                  <option value="LTE 4G Router Outdoor ZLT P11 - TR">LTE 4G Router Outdoor ZLT P11 - TR</option>
+                  <option value="LTE 4G Router Outdoor P11 IDU - TR">LTE 4G Router Outdoor P11 IDU - TR</option>
+                  <option value="LTE 4G Router Indoor B310s-925 - RS">LTE 4G Router Indoor B310s-925 - RS</option>
+                  <option value="LTE 4G Router Indoor S10 Data - TR">LTE 4G Router Indoor S10 Data - TR</option>
+                  <option value="LTE S10 M60 V10 Antenna">LTE S10 M60 V10 Antenna</option>
+                  <option value="LTE M60 Handset - DBN M">LTE M60 Handset - DBN M</option>
+                  <option value="LTE V10 Handset W/Curl code - DBN M">LTE V10 Handset W/Curl code - DBN M</option>
+                  <option value="LTE M60 Curl code - DBN M">LTE M60 Curl code - DBN M</option>
+                  <option value="Handset -Tozed M60 - DBN TR">Handset -Tozed M60 - DBN TR</option>
+                  <option value="LTE 4G Router Outdoor P11 IDU - M1">LTE 4G Router Outdoor P11 IDU - M1</option>
+                  <option value="Yagi Antenna W/ Pigtail 10m SMA-Male">Yagi Antenna W/ Pigtail 10m SMA-Male</option>
+                  <option value="LTE Power Adapter 12V/1A Tozed - DBN M">LTE Power Adapter 12V/1A Tozed - DBN M</option>
+                  <option value="LTE P11 Acc Pack / Cable -DBN TR">LTE P11 Acc Pack / Cable -DBN TR</option>
+                  <option value="LTE P11 Acc Pack / Bracket -DBN TR">LTE P11 Acc Pack / Bracket -DBN TR</option>
+                  <option value="5G Router IDU Tozed ZLT X21 -TR">5G Router IDU Tozed ZLT X21 -TR</option>
+                  <option value="5G Router IDU Huawei H112- 370 -TR">5G Router IDU Huawei H112- 370 -TR</option>
+                  <option value="LTE CAT6 Router Tozed S12 Pro TR">LTE CAT6 Router Tozed S12 Pro TR</option>
+                  <option value="LTE 4G Router Outdoor ZLT P11 H -TR">LTE 4G Router Outdoor ZLT P11 H -TR</option>
+                  <option value="LTE 4G Router Outdoor P11 H IDU -TR">LTE 4G Router Outdoor P11 H IDU -TR</option>
+                  <option value="LTE ODU Selling Pack P11H With Voice">LTE ODU Selling Pack P11H With Voice</option>
+                  <option value="LTE ODU Selling Pack P11H W/Out Voice">LTE ODU Selling Pack P11H W/Out Voice</option>
+                  <option value="LTE ODU Selling Pack P11H IDU With Voice">LTE ODU Selling Pack P11H IDU With Voice</option>
+                  <option value="LTE ODU SellingPack P11H IDU W/Out Voice">LTE ODU SellingPack P11H IDU W/Out Voice</option>
+                  <option value="LTE 4G Router Outdoor P11H With Voice">LTE 4G Router Outdoor P11H With Voice</option>
+                  <option value="LTE 4G Router Outdoor P11H With VoiceIDU">LTE 4G Router Outdoor P11H With VoiceIDU</option>
+                  <option value="LTE Power Adapter 12V/2A - TR">LTE Power Adapter 12V/2A - TR</option>
+                  <option value="Yagi Antenna 9dBi Pure Cop. Cable Kexint">Yagi Antenna 9dBi Pure Cop. Cable Kexint</option>
+                  <option value="Yagi Antenna 11dBi Cop. Clad Alu. Kexint">Yagi Antenna 11dBi Cop. Clad Alu. Kexint</option>
+                  <option value="Yagi Antenna 14dBi Cop. Clad Alu. Kexint">Yagi Antenna 14dBi Cop. Clad Alu. Kexint</option>
+                  <option value="LTE CAT6 Router Tozed S12 Pro - M">LTE CAT6 Router Tozed S12 Pro - M</option>
+                  <option value="LTE 4G Router Outdoor P11H-M">LTE 4G Router Outdoor P11H-M</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Voice -M">LTE 4G Router Outdoor P11H W/Voice -M</option>
+                  <option value="LTE 4G Router Outdoor P11H IDU – M">LTE 4G Router Outdoor P11H IDU – M</option>
+                  <option value="LTE 4G Router Outdoor P11H IDU W/Voice-M">LTE 4G Router Outdoor P11H IDU W/Voice-M</option>
+                  <option value="LTE CAT12 Router ODU IDU Tozed W51-TR">LTE CAT12 Router ODU IDU Tozed W51-TR</option>
+                  <option value="LTE CAT12 Router ODU Tozed ZLT P90-TR">LTE CAT12 Router ODU Tozed ZLT P90-TR</option>
+                  <option value="LTE CAT12 Router ODU Tozed ZLT P90-M">LTE CAT12 Router ODU Tozed ZLT P90-M</option>
+                  <option value="LTE 4G Router Outdoor P11H IDU W/Voice">LTE 4G Router Outdoor P11H IDU W/Voice</option>
+                  <option value="LTE 4G Router Outdoor P11H IDU W/Out Voice">LTE 4G Router Outdoor P11H IDU W/Out Voice</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Out Voice">LTE 4G Router Outdoor P11H W/Out Voice</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Voice">LTE 4G Router Outdoor P11H W/Voice</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Voice IDU">LTE 4G Router Outdoor P11H W/Voice IDU</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Out Voice IDU">LTE 4G Router Outdoor P11H W/Out Voice IDU</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Voice IDU-M">LTE 4G Router Outdoor P11H W/Voice IDU-M</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Out Voice IDU-M">LTE 4G Router Outdoor P11H W/Out Voice IDU-M</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Voice-M">LTE 4G Router Outdoor P11H W/Voice-M</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Out Voice-M">LTE 4G Router Outdoor P11H W/Out Voice-M</option>
+                  <option value="LTE 4G Router Outdoor P11H-M">LTE 4G Router Outdoor P11H-M</option>
+                  <option value="LTE 4G Router Outdoor P11H IDU-M">LTE 4G Router Outdoor P11H IDU-M</option>
+                  <option value="LTE 4G Router Outdoor P11H IDU W/Voice-M">LTE 4G Router Outdoor P11H IDU W/Voice-M</option>
+                  <option value="LTE 4G Router Outdoor P11H IDU W/Out Voice-M">LTE 4G Router Outdoor P11H IDU W/Out Voice-M</option>
+                  <option value="LTE 4G Router Outdoor P11H IDU W/Voice">LTE 4G Router Outdoor P11H IDU W/Voice</option>
+                  <option value="LTE 4G Router Outdoor P11H IDU W/Out Voice">LTE 4G Router Outdoor P11H IDU W/Out Voice</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Out Voice">LTE 4G Router Outdoor P11H W/Out Voice</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Voice">LTE 4G Router Outdoor P11H W/Voice</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Voice IDU">LTE 4G Router Outdoor P11H W/Voice IDU</option>
+                  <option value="LTE 4G Router Outdoor P11H W/Out Voice IDU">LTE 4G Router Outdoor P11H W/Out Voice IDU</option>
+                </select>
+              </div>
+              <div class="quantity-container">
+                <label class="quantity-label">Quantity:</label>
+                <select id="dbnQuantity" class="quantity-select" onchange="toggleCustomInput('dbn')">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="custom">Custom...</option>
+                </select>
+              </div>
+              <div id="dbnCustomQuantity" class="custom-quantity">
+                <label class="quantity-label">Custom Quantity:</label>
+                <input type="text" id="dbnCustomInput" class="quantity-input" placeholder="Enter quantity">
+              </div>
+              <button class="add-item-btn" onclick="addDBNToTable()">
+                <i class="material-icons">add</i> Add DBN Item
+              </button>
+            </div>
+          </div>
+          
+          <!-- Selected Items Table -->
+          <div class="section-title">
+            <i class="material-icons">list_alt</i>
+            <h2>Selected Items</h2>
+          </div>
+          
+          <div class="table-container">
+            <table id="selectedItemsTable">
+              <thead>
+                <tr>
+                  <th>Material Description</th>
+                  <th>Quantity</th>
+                  <th>SLOC</th>
+                  <th>Team ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="selectedItemsBody">
+                <!-- Items will be added here dynamically -->
+              </tbody>
+            </table>
+          </div>
+          
+          <button class="add-row-btn" onclick="addCustomRow()">
+            <i class="material-icons">add_circle_outline</i> Add Custom Item
+          </button>
+        </div>
+        
+        <!-- Email Preview Section -->
+        <div class="submit-section">
+          <div class="section-title">
+            <i class="material-icons">email</i>
+            <h2>Email Preview</h2>
+          </div>
+          
+          <div class="email-preview">
+            <h3>Subject: <span id="emailSubject">Material Request - Team ID: </span></h3>
+            <p>Dear Material Management Team,</p>
+            <p>Please find below the material request from our team:</p>
+            
+            <!-- Excel Table Preview -->
+            <div class="excel-preview">
+              <h3>Requested Materials:</h3>
+              <table class="excel-table" id="excelPreviewTable">
+                <thead>
+                  <tr>
+                    <th>Material Description</th>
+                    <th>Quantity</th>
+                    <th>SLOC</th>
+                    <th>Team ID</th>
+                  </tr>
+                </thead>
+                <tbody id="excelPreviewBody">
+                  <!-- Excel table rows will be added here -->
+                </tbody>
+              </table>
+            </div>
+            
+            <p>Thank you for your support.</p>
+            <p>Best regards,<br>CFSS Team</p>
+          </div>
+          
+          <div class="instructions">
+            <i class="material-icons">info</i>
+            <strong>Instructions:</strong> Review the email preview above. Once you're satisfied with the request, click the "Generate Email" button to open your email client with the formatted request.
+          </div>
+          
+          <button class="submit-btn" onclick="generateEmail()">
+            <i class="material-icons">send</i> Generate Email
+          </button>
+        </div>
+      </div>
+      
+      <!-- Material Transfer Tab -->
+      <div class="tab-content" id="transfer-tab">
+        <div class="transfer-section">
+          <div class="transfer-header">
+            <div class="transfer-title">
+              <i class="material-icons">swap_horiz</i>
+              <h2>Material Transfer Request</h2>
+            </div>
+          </div>
+          
+          <!-- Desktop Transfer Table -->
+          <div class="table-container">
+            <table class="transfer-table">
+              <thead>
+                <tr>
+                  <th>From Team ID</th>
+                  <th>From SLOC</th>
+                  <th></th>
+                  <th>To Team ID</th>
+                  <th>To SLOC</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="transferTableBody">
+                <tr>
+                  <td><input type="text" placeholder="From Team ID"></td>
+                  <td><input type="text" placeholder="From SLOC"></td>
+                  <td class="transfer-direction">→</td>
+                  <td><input type="text" placeholder="To Team ID"></td>
+                  <td><input type="text" placeholder="To SLOC"></td>
+                  <td class="transfer-actions">
+                    <button class="delete-btn" onclick="deleteTransferRow(this)">
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Mobile Transfer Rows -->
+          <div id="transferMobileRows">
+            <div class="transfer-row-mobile">
+              <div class="transfer-row-header">
+                <div class="transfer-row-title">Transfer #1</div>
+                <button class="delete-btn" onclick="deleteTransferRowMobile(this)">
+                  <i class="material-icons">delete</i>
+                </button>
+              </div>
+              <div class="transfer-row-content">
+                <div class="transfer-from">
+                  <div class="transfer-field">
+                    <label>From Team ID:</label>
+                    <input type="text" placeholder="From Team ID">
+                  </div>
+                  <div class="transfer-field">
+                    <label>From SLOC:</label>
+                    <input type="text" placeholder="From SLOC">
+                  </div>
+                </div>
+                <div class="transfer-direction-mobile">↓</div>
+                <div class="transfer-to">
+                  <div class="transfer-field">
+                    <label>To Team ID:</label>
+                    <input type="text" placeholder="To Team ID">
+                  </div>
+                  <div class="transfer-field">
+                    <label>To SLOC:</label>
+                    <input type="text" placeholder="To SLOC">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button class="add-row-btn" onclick="addTransferRow()">
+            <i class="material-icons">add_circle_outline</i> Add Transfer Row
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
-    // YOUR ENTIRE JAVASCRIPT HERE - Copy from original file
-    // ... include ALL your JavaScript ...
+    // Global variables
+    let selectedItems = [];
+    let transferCount = 1;
+    
+    // Tab navigation
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs and contents
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked tab and corresponding content
+        tab.classList.add('active');
+        const tabId = tab.getAttribute('data-tab');
+        document.getElementById(`${tabId}-tab`).classList.add('active');
+      });
+    });
+    
+    // Update email subject based on Team ID
+    function updateEmailSubject() {
+      const teamId = document.getElementById('teamId').value;
+      const subjectElement = document.getElementById('emailSubject');
+      subjectElement.textContent = `Material Request - Team ID: ${teamId || '[Team ID]'}`;
+    }
+    
+    // Toggle custom quantity input
+    function toggleCustomInput(type) {
+      const selectElement = document.getElementById(`${type}Quantity`);
+      const customDiv = document.getElementById(`${type}CustomQuantity`);
+      
+      if (selectElement.value === 'custom') {
+        customDiv.style.display = 'block';
+      } else {
+        customDiv.style.display = 'none';
+      }
+    }
+    
+    // Get quantity value
+    function getQuantity(type) {
+      const selectElement = document.getElementById(`${type}Quantity`);
+      if (selectElement.value === 'custom') {
+        return document.getElementById(`${type}CustomInput`).value || '1';
+      }
+      return selectElement.value;
+    }
+    
+    // Add DTV item to table
+    function addDTVToTable() {
+      const dropdown = document.getElementById('dtvDropdown');
+      const material = dropdown.value;
+      
+      if (!material) {
+        showToast('Please select a DTV material', 'error');
+        return;
+      }
+      
+      const quantity = getQuantity('dtv');
+      addItemToTable('DTV', material, quantity);
+      
+      // Reset dropdown
+      dropdown.selectedIndex = 0;
+      document.getElementById('dtvQuantity').selectedIndex = 0;
+      document.getElementById('dtvCustomQuantity').style.display = 'none';
+      document.getElementById('dtvCustomInput').value = '';
+    }
+    
+    // Add DBN item to table
+    function addDBNToTable() {
+      const dropdown = document.getElementById('dbnDropdown');
+      const material = dropdown.value;
+      
+      if (!material) {
+        showToast('Please select a DBN material', 'error');
+        return;
+      }
+      
+      const quantity = getQuantity('dbn');
+      addItemToTable('DBN', material, quantity);
+      
+      // Reset dropdown
+      dropdown.selectedIndex = 0;
+      document.getElementById('dbnQuantity').selectedIndex = 0;
+      document.getElementById('dbnCustomQuantity').style.display = 'none';
+      document.getElementById('dbnCustomInput').value = '';
+    }
+    
+    // Add item to selected items table
+    function addItemToTable(category, material, quantity) {
+      const tableBody = document.getElementById('selectedItemsBody');
+      const excelTableBody = document.getElementById('excelPreviewBody');
+      const teamId = document.getElementById('teamId').value;
+      const sloc = document.getElementById('sloc').value;
+      
+      // Create a unique ID for the item
+      const itemId = Date.now();
+      
+      // Add to selected items array
+      selectedItems.push({
+        id: itemId,
+        category: category,
+        material: material,
+        quantity: quantity,
+        teamId: teamId,
+        sloc: sloc
+      });
+      
+      // Add to selected items table
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td>${material}</td>
+        <td>${quantity}</td>
+        <td>${sloc}</td>
+        <td>${teamId}</td>
+        <td>
+          <button class="delete-btn" onclick="deleteItem(${itemId})">
+            <i class="material-icons">delete</i> Remove
+          </button>
+        </td>
+      `;
+      tableBody.appendChild(newRow);
+      
+      // Add to Excel preview table
+      const excelRow = document.createElement('tr');
+      excelRow.innerHTML = `
+        <td>${material}</td>
+        <td>${quantity}</td>
+        <td>${sloc}</td>
+        <td>${teamId}</td>
+      `;
+      excelTableBody.appendChild(excelRow);
+      
+      showToast(`${material} added to request`, 'success');
+    }
+    
+    // Add custom row to table
+    function addCustomRow() {
+      const material = prompt('Enter material description:');
+      if (!material) return;
+      
+      const quantity = prompt('Enter quantity:');
+      if (!quantity) return;
+      
+      addItemToTable('Custom', material, quantity);
+    }
+    
+    // Delete item from table
+    function deleteItem(itemId) {
+      // Remove from selected items array
+      selectedItems = selectedItems.filter(item => item.id !== itemId);
+      
+      // Remove from selected items table
+      const tableBody = document.getElementById('selectedItemsBody');
+      const rows = tableBody.getElementsByTagName('tr');
+      
+      for (let i = 0; i < rows.length; i++) {
+        const deleteBtn = rows[i].querySelector('.delete-btn');
+        if (deleteBtn && deleteBtn.getAttribute('onclick').includes(itemId)) {
+          tableBody.removeChild(rows[i]);
+          break;
+        }
+      }
+      
+      // Rebuild Excel preview table
+      rebuildExcelPreview();
+      
+      showToast('Item removed from request', 'success');
+    }
+    
+    // Rebuild Excel preview table
+    function rebuildExcelPreview() {
+      const excelTableBody = document.getElementById('excelPreviewBody');
+      excelTableBody.innerHTML = '';
+      
+      selectedItems.forEach(item => {
+        const excelRow = document.createElement('tr');
+        excelRow.innerHTML = `
+          <td>${item.material}</td>
+          <td>${item.quantity}</td>
+          <td>${item.sloc}</td>
+          <td>${item.teamId}</td>
+        `;
+        excelTableBody.appendChild(excelRow);
+      });
+    }
+    
+    // Add transfer row
+    function addTransferRow() {
+      transferCount++;
+      
+      // Add to desktop table
+      const desktopTableBody = document.getElementById('transferTableBody');
+      const newDesktopRow = document.createElement('tr');
+      newDesktopRow.innerHTML = `
+        <td><input type="text" placeholder="From Team ID"></td>
+        <td><input type="text" placeholder="From SLOC"></td>
+        <td class="transfer-direction">→</td>
+        <td><input type="text" placeholder="To Team ID"></td>
+        <td><input type="text" placeholder="To SLOC"></td>
+        <td class="transfer-actions">
+          <button class="delete-btn" onclick="deleteTransferRow(this)">
+            <i class="material-icons">delete</i>
+          </button>
+        </td>
+      `;
+      desktopTableBody.appendChild(newDesktopRow);
+      
+      // Add to mobile rows
+      const mobileRowsContainer = document.getElementById('transferMobileRows');
+      const newMobileRow = document.createElement('div');
+      newMobileRow.className = 'transfer-row-mobile';
+      newMobileRow.innerHTML = `
+        <div class="transfer-row-header">
+          <div class="transfer-row-title">Transfer #${transferCount}</div>
+          <button class="delete-btn" onclick="deleteTransferRowMobile(this)">
+            <i class="material-icons">delete</i>
+          </button>
+        </div>
+        <div class="transfer-row-content">
+          <div class="transfer-from">
+            <div class="transfer-field">
+              <label>From Team ID:</label>
+              <input type="text" placeholder="From Team ID">
+            </div>
+            <div class="transfer-field">
+              <label>From SLOC:</label>
+              <input type="text" placeholder="From SLOC">
+            </div>
+          </div>
+          <div class="transfer-direction-mobile">↓</div>
+          <div class="transfer-to">
+            <div class="transfer-field">
+              <label>To Team ID:</label>
+              <input type="text" placeholder="To Team ID">
+            </div>
+            <div class="transfer-field">
+              <label>To SLOC:</label>
+              <input type="text" placeholder="To SLOC">
+            </div>
+          </div>
+        </div>
+      `;
+      mobileRowsContainer.appendChild(newMobileRow);
+      
+      showToast('Transfer row added', 'success');
+    }
+    
+    // Delete transfer row (desktop)
+    function deleteTransferRow(button) {
+      const row = button.closest('tr');
+      row.parentNode.removeChild(row);
+      showToast('Transfer row removed', 'success');
+    }
+    
+    // Delete transfer row (mobile)
+    function deleteTransferRowMobile(button) {
+      const row = button.closest('.transfer-row-mobile');
+      row.parentNode.removeChild(row);
+      showToast('Transfer row removed', 'success');
+    }
+    
+// Generate email content and open email client
+function generateEmail() {
+  const teamId = document.getElementById('teamId').value;
+  const sloc = document.getElementById('sloc').value;
+  
+  if (!teamId || !sloc) {
+    showToast('Please fill in Team ID and SLOC', 'error');
+    return;
+  }
+  
+  if (selectedItems.length === 0) {
+    showToast('Please add at least one material to the request', 'error');
+    return;
+  }
+  
+  // Calculate maximum lengths for each column
+  let maxMaterialLength = "Material Description".length;
+  let maxQuantityLength = "Quantity".length;
+  let maxSlocLength = "SLOC".length;
+  let maxTeamIdLength = "Team ID".length;
+  
+  selectedItems.forEach(item => {
+    maxMaterialLength = Math.max(maxMaterialLength, item.material.length);
+    maxQuantityLength = Math.max(maxQuantityLength, item.quantity.toString().length);
+    maxSlocLength = Math.max(maxSlocLength, item.sloc.length);
+    maxTeamIdLength = Math.max(maxTeamIdLength, item.teamId.length);
+  });
+  
+  // Create email body with markdown-style table
+  let emailBody = `Dear Material Management Team,\n\n`;
+  emailBody += `Please find below the material request from our team:\n\n`;
+  emailBody += `Requested Materials:\n\n`;
+  
+  // Create table header with proper padding
+  const materialHeader = "Material Description".padEnd(maxMaterialLength, ' ');
+  const quantityHeader = "Quantity".padEnd(maxQuantityLength, ' ');
+  const slocHeader = "SLOC".padEnd(maxSlocLength, ' ');
+  const teamIdHeader = "Team ID".padEnd(maxTeamIdLength, ' ');
+  
+  emailBody += `| ${materialHeader} | ${quantityHeader} | ${slocHeader} | ${teamIdHeader} |\n`;
+  
+  // Create separator line with maximum length for each column
+  const separatorLine = "| " + 
+                        "-".repeat(maxMaterialLength) + " | " + 
+                        "-".repeat(maxQuantityLength) + " | " + 
+                        "-".repeat(maxSlocLength) + " | " + 
+                        "-".repeat(maxTeamIdLength) + " |\n";
+  
+  emailBody += separatorLine;
+  
+  // Add table rows with proper padding to match maximum lengths
+  selectedItems.forEach(item => {
+    const material = item.material.padEnd(maxMaterialLength, ' ');
+    const quantity = item.quantity.toString().padEnd(maxQuantityLength, ' ');
+    const sloc = item.sloc.padEnd(maxSlocLength, ' ');
+    const teamId = item.teamId.padEnd(maxTeamIdLength, ' ');
+    
+    emailBody += `| ${material} | ${quantity} | ${sloc} | ${teamId} |\n`;
+  });
+  
+  emailBody += `\nThank you for your support.\n\n`;
+  emailBody += `Best regards,\nCFSS Team`;
+  
+  // Email details
+  const subject = `Material Request - Team ID: ${teamId}`;
+  const toEmail = "chamal.janidu@dbs.dialog.lk";
+  const ccEmails = "mangala.thilakarathna@dbs.dialog.lk,menaka.hewage@dbs.dialog.lk,kamaraj.dhanushan-os@dbs.dialog.lk,rathnasiri.abeykoon@dbs.dialog.lk";
+  
+  // Create mailto link
+  const mailtoLink = `mailto:${toEmail}?cc=${ccEmails}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+  
+  // Open email client
+  window.location.href = mailtoLink;
+  
+  showToast('Opening email client...', 'success');
+}
+    
+    // Show toast notification
+    function showToast(message, type = 'success') {
+      // Remove existing toasts
+      const existingToasts = document.querySelectorAll('.toast');
+      existingToasts.forEach(toast => toast.remove());
+      
+      // Create new toast
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.innerHTML = `
+        <i class="material-icons">${type === 'success' ? 'check_circle' : 'error'}</i>
+        <span>${message}</span>
+      `;
+      
+      document.body.appendChild(toast);
+      
+      // Remove toast after 3 seconds
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 3000);
+    }
+    
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add event listeners for form fields
+      document.getElementById('teamId').addEventListener('input', updateEmailSubject);
+      document.getElementById('sloc').addEventListener('input', updateEmailSubject);
+      
+      // Initialize email preview
+      updateEmailSubject();
+    });
   </script>
 </body>
 </html>
